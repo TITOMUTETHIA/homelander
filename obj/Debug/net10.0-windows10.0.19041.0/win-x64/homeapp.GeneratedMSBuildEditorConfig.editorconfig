@@ -78,3 +78,23 @@ build_metadata.AdditionalFiles.Inflator = SourceGen
 build_metadata.AdditionalFiles.NoWarn = 
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
+
+[C:/Users/BIGFISH/source/repos/homeapp/homeapp/Resources/View/DetailsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = homeapp.Resources.View.DetailsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\View\DetailsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\View\DetailsPage.xaml
+build_metadata.AdditionalFiles.Inflator = SourceGen
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
+
+[C:/Users/BIGFISH/source/repos/homeapp/homeapp/Resources/View/LandingPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = homeapp.Resources.View.LandingPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\View\LandingPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\View\LandingPage.xaml
+build_metadata.AdditionalFiles.Inflator = SourceGen
+build_metadata.AdditionalFiles.NoWarn = 
+build_metadata.AdditionalFiles.EnableDiagnostics = 
+build_metadata.AdditionalFiles.LineInfo = 
