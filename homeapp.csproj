@@ -73,7 +73,15 @@
 	<ItemGroup>
 	  <Folder Include="Properties\Control\" />
 	  <Folder Include="Properties\Model\" />
-	  <Folder Include="Properties\ViewModel\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Resources\View\DetailsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\View\LandingPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>
