@@ -3,7 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="homeapp.Resources.View.LandingPage"
              NavigationPage.HasNavigationBar="False">
-    <Grid RowDefinitions="Auto, Auto, *" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="32" BackgroundColor="#FEFEFE" RowSpacing="32">  
-        
+    <Grid RowDefinitions="Auto, Auto, *" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="32" BackgroundColor="#FEFEFE" RowSpacing="32">
+        <Grid HorizontalOptions="FillAndExpand" >
+            <VerticalStackLayout Grid.Row="0" Spacing="16" HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label Text="HomeApp" FontSize="36" FontAttributes="Bold" HorizontalOptions="Center"/>  
+                    <Label Text="Welcome to HomeApp" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center"/>  
+            </VerticalStackLayout>
+            <Border Grid.Row="1" Padding="16" BackgroundColor="#E0E0E0">
+                  <Label Text="Your home, your way" FontSize="18" FontAttributes="Italic" HorizontalOptions="Center"/>
+                  <Image Source="homeapp_logo.png" Aspect="AspectFit" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center"/>
+            </Border>   
+        </Grid>
     </Grid>
 </ContentPage>
