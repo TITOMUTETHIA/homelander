@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class=x:Class="homeapp.View.LandingPage"
-namespace homeapp.View
-{
-    public partial class LandingPage : ContentPage
-    {
-        public LandingPage()
-        {
-            InitializeComponent();
-        }
-    }
-}
+             x:Class="homeapp.View.LandingPage"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -31,7 +21,7 @@ namespace homeapp.View
                                 <VisualState x:Name="Unchecked">
                                     <VisualState.Setters>
                                         <Setter Property="BackgroundColor" Value="#F0F0F1"/>
-                                        <Setter TargetName="label" Property="Label.Opacity" Value="0.6"/>
+                                        <Setter TargetName="label" Property="Label.Opacity" Value="0.6 "/>
                                         <Setter TargetName="label" Property="Label.TextColor" Value="Black"/>
                                     </VisualState.Setters>
                                 </VisualState>
@@ -70,6 +60,11 @@ namespace homeapp.View
                 </HorizontalStackLayout>
             </ScrollView>
         </Grid>
+        <CollectionView x:Name="colView" Grid.Row="2" ItemsSource="{Binding Properties}" VerticalScrollBarVisibility="Never" SelectionMode="Single" SelectedItem="{Binding SelectedProperty}" SelectionChangedCommand="{Binding Propertyelected}">
+            <CollectionView.ItemTemplate>   
+                
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     <Grid>
             
 </ContentPage>
