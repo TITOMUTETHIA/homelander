@@ -3,6 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="homeapp.Resources.View.LandingPage"
              NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ControlTemplate x:Key="SectionTemplate">
+                <Border BackgroundColor="#F0F0F1" WidthRequest="120" StrokeShape="RoundedRectangle 20" StrokeThickness="0">
+                    
+                </Border>   
+            </ControlTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <Grid RowDefinitions="Auto, Auto, *" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="32" BackgroundColor="#FEFEFE" RowSpacing="32">
         <Grid HorizontalOptions="FillAndExpand" >
             <VerticalStackLayout Grid.Row="0" Spacing="16" HorizontalOptions="Center" VerticalOptions="Center">
@@ -14,5 +23,23 @@
                   <Image Source="homeapp_logo.png" Aspect="AspectFit" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center"/>
             </Border>   
         </Grid>
-    </Grid>
+        <Grid Grid.Row="2" HorizontalOptions="FillAndExpand" VerticalOptions="End">
+            <Button Text="Get Started" FontSize="18" BackgroundColor="#007ACC" TextColor="White" CornerRadius="8" HeightRequest="50" Clicked="OnGetStartedClicked"/>    
+        </Grid>
+        <Grid Grid.Row="1" RowDefinitions="Auto, Auto, Auto" HorizontalOptions="FillAndExpand">
+            <Label Text="Features" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center"/>
+            <Image Source="features_image.png" Aspect="AspectFit" HeightRequest="150" WidthRequest="150" HorizontalOptions="Center"/>
+            <Line Grid.Row="1" X1="0" X2="1000" Stroke="#F0F0F1"/>
+            <ScrollView Orientation="Horizontal" Grid.Row="2" HorizontalScrollBarVisibility="Never">
+                <HorizontalStackLayout x:Name="SectionList" Margin="0, 20, 0, 0" BindableLayout.ItemsSource="{Binding Sections}" Spacing="10">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <RadioButton Content="{Binding Name}" />  
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </HorizontalStackLayout>
+            </ScrollView>
+        </Grid>
+    <Grid>
+            
 </ContentPage>
