@@ -1,4 +1,4 @@
-﻿using PropertApp.views;
+﻿using HomeApp.View;
 
 namespace homeapp
 {

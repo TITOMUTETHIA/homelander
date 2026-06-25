@@ -1,4 +1,4 @@
-﻿namespace PropertApp.views
+﻿namespace HomeApp.views
 {
     internal class LandingPageViewModel
     {
