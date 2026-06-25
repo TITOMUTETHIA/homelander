@@ -1,7 +1,4 @@
-﻿using homeapp.Resources.View;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Maui; // if needed
-using Microsoft.Maui.Controls;
+﻿using PropertApp.views;
 
 namespace homeapp
 {

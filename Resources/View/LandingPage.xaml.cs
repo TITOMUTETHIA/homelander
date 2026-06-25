@@ -1,11 +1,16 @@
-namespace PropertApp.ViewModel;
-namespace PropertApp.views;
-
-public partial class LandingPage : ContentPage
+namespace PropertApp.views
 {
-	public LandingPage()
-	{
-		InitializeComponent();
-		this.BindingContext = new LandingPageViewModel();
+    public partial class LandingPage : ContentPage
+    {
+        public LandingPage()
+        {
+            InitializeComponent();
+            this.BindingContext = new LandingPageViewModel();
+        }
+
+        private void InitializeComponent()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

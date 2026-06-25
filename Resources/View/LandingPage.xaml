@@ -1,15 +1,43 @@
-File: homeapp\Resources\View\LandingPage.xaml
-````````csharp
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="homeapp.Resources.View.LandingPage"
+             x:Class=x:Class="homeapp.View.LandingPage"
+namespace homeapp.View
+{
+    public partial class LandingPage : ContentPage
+    {
+        public LandingPage()
+        {
+            InitializeComponent();
+        }
+    }
+}
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
             <ControlTemplate x:Key="SectionTemplate">
                 <Border BackgroundColor="#F0F0F1" WidthRequest="120" StrokeShape="RoundedRectangle 20" StrokeThickness="0">
-                    <Label x:Name="label" Text="{TemplateBinding Content} Fontize="14" HorizontalOptions="Center" VerticalOptions="Center" Padding="8"/>
+                    <Label x:Name="label" Text="{TemplateBinding Content}" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" Padding="8"/>
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroupList>
+                            <VisualStateGroup x:Name="CheckedStates">
+                                <VisualState x:Name="Checked">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="#4C65FF"/>
+                                        <Setter TargetName="label" Property="Label.Opacity" Value="1"/>
+                                        <Setter TargetName="label" Property="Label.TextColor" Value="White"/>   
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="Unchecked">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="#F0F0F1"/>
+                                        <Setter TargetName="label" Property="Label.Opacity" Value="0.6"/>
+                                        <Setter TargetName="label" Property="Label.TextColor" Value="Black"/>
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateGroupList>
+                     </VisualStateManager.VisualStateGroups>
                 </Border>   
             </ControlTemplate>
         </ResourceDictionary>
@@ -45,49 +73,3 @@ File: homeapp\Resources\View\LandingPage.xaml
     <Grid>
             
 </ContentPage>
-````````
-
-These are the code blocks that represents the suggested code change:
-
-````````csharp
-using Microsoft.Maui.Controls;
-
-namespace homeapp.Resources.View
-{
-    public partial class LandingPage : ContentPage
-    {
-        public LandingPage()
-        {
-            InitializeComponent();
-        }
-    }
-}
-````````
-````````csharp
-x:Class="homeapp.Resources.View.LandingPage"
-````````
-````````csharp
-namespace homeapp.Resources.View
-{
-    // ...
-}
-````````
-````````csharp
-<MauiXaml Include="Resources\View\LandingPage.xaml" />
-````````
-
-
-# Response
-````````csharp
-using Microsoft.Maui.Controls;
-
-namespace homeapp.Resources.View
-{
-    public partial class LandingPage : ContentPage
-    {
-        public LandingPage()
-        {
-            InitializeComponent();
-        }
-    }
-}
