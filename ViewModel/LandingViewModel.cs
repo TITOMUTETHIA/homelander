@@ -1,5 +1,5 @@
 ﻿using System.Windows.Input;
-using HomeApp.Model;
+using HomeApp.ViewModel;
 using HomeApp.View;
 using System.Linq;
 using System.Threading.Tasks;  

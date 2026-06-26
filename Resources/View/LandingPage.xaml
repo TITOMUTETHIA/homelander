@@ -5,6 +5,21 @@
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
+            <Style TargetType="Grid">
+                <Setter ="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal"/>
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="Transparent"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                    
+                </Setter>
+            </Style>
             <ControlTemplate x:Key="SectionTemplate">
                 <Border BackgroundColor="#F0F0F1" WidthRequest="120" StrokeShape="RoundedRectangle 20" StrokeThickness="0">
                     <Label x:Name="label" Text="{TemplateBinding Content}" FontSize="14" HorizontalOptions="Center" VerticalOptions="Center" Padding="8"/>
