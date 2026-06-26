@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Homeapp.View.DetailsPage"
+             NavigationPage.HasNavigationBar="False">
+    <Grid HorizontalOptions="Fill" VerticalOptions="Fill">
+        <Image Aspect="AspectFill" Source="{Binding SelectedProperty.DefaultImage}"/>   
+        <Grid RowDefinitions="*,Auto">
+            <Grid x:Name="PopView" Grid.Row="1">
+                <Border>
+                </Border>   
+            </Grid>
+        </Grid>
+    </Grid>
+</ContentPage>
