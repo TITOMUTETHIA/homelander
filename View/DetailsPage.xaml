@@ -7,9 +7,18 @@
         <Image Aspect="AspectFill" Source="{Binding SelectedProperty.DefaultImage}"/>   
         <Grid RowDefinitions="*,Auto">
             <Grid x:Name="PopView" Grid.Row="1">
-                <Border>
-                </Border>   
-            </Grid>
+                <Border BackgroundColor="White" StrokeShape="RoundedRectangle 35,35,0,0" StrokeThickness="0" Opacity=".9" HorizontalOptions="Fill"/>
+                <Grid Padding="30">
+                    <VerticalStackLayout>
+                        <VerticalStackLayout x:Name="AddressView">
+                            <Label Text="{Binding SelectedProperty.Address}" FontSize="20" Opacity=".5" TextColor="Black"/>
+                            <Label Text="{Binding SelectedProperty.Price, StringFormat='Price: {0:###,###}'}" FontSize="Body" FontAttributes="Bold" TextColor="Black"/>
+                        </VerticalStackLayout>
+                        <Button x:Name="buyButton" Text="Buy Now" BackgroundColor="#4C65FF" TextColor="White" FontSize="18" CornerRadius="25" HeightRequest="50" Clicked="OnContactAgentClicked" HorizontalOptions="Start" Margin="0,20,0,0"/>
+                    </VerticalStackLayout>
+                   
+
+                </Grid>
         </Grid>
     </Grid>
 </ContentPage>
