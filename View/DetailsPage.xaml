@@ -16,9 +16,23 @@
                         </VerticalStackLayout>
                         <Button x:Name="buyButton" Text="Buy Now" BackgroundColor="#4C65FF" TextColor="White" FontSize="18" CornerRadius="25" HeightRequest="50" Clicked="OnContactAgentClicked" HorizontalOptions="Start" Margin="0,20,0,0"/>
                     </VerticalStackLayout>
-                   
-
                 </Grid>
+            </Grid>
         </Grid>
     </Grid>
 </ContentPage>
+
+using Microsoft.Maui.Controls;
+
+namespace Homeapp.View
+{
+    public partial class DetailsPage : ContentPage
+    {
+        public DetailsPage()
+        {
+            InitializeComponent();
+        }
+
+        // Your event handlers, e.g. OnContactAgentClicked, go here
+    }
+}
