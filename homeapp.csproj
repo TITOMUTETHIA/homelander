@@ -72,10 +72,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Homes\Control\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <MauiXaml Update="View\DetailsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
