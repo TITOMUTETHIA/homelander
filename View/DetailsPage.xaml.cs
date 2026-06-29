@@ -4,12 +4,31 @@ namespace homeapp.Resources.View;
 
 public partial class DetailsPage : ContentPage
 {
-	public DetailsPage()
+	public DetailsPage(Model.Home SelectedHome)
 	{
-		InitializeComponent(Model.Home SelectedHome);
-		var ViewModel = new DetailsViewModel() { SelectedHome = selectedHome };
-        ViewModel.HomeImages = selectedHome.Images.Take(count:2).ToList();
-		ViewModel.MoreItems = selectedHome.Images.Count - 2;
-		this.BindingContext = ViewModel;
+        InitializeComponent();
+        var viewModel = new DetailsViewModel () { SelectedHome = SelectedHome, HomeImages};
+        viewModel.HomeImages = SelectedHome.Images.Take(count:2).ToList();
+        viewModel.MoreItems = SelectedHome.Images.Count - 2;    
+        this.BindingContext = viewModel;
+        SetViewPositions();
+    }
+    private void SetViewPositions()
+    {
+        // Implementation for setting view positions
+        detailsBtn.Opacity = 0;
+        detailBtn.Scale = 0.2;
+        DetailsBtn.Rotation = 300;
+
+        imageView.TranslationX = 300;
+        imageView.Opacity = 0;
+        addressView.TranslationX = addressView.TranslationY = -30;
+        addresView.Opacity = 0;
+
+        buyBtn.Opacity = 0;
+        buyBtn.Scale = 0.2;
+
+        popView.TranslationY = 300;
+        popView.Opacity = 0.5   ;
     }
 }
