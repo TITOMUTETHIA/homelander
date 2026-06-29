@@ -1,6 +1,5 @@
 ﻿using System.Windows.Input;
-using HomeApp.ViewModel;
-using HomeApp.View;
+using homeapp.View;
 using System.Linq;
 using System.Threading.Tasks;  
 using System.Collections.Generic;

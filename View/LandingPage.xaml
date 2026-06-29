@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:ct="clr-namespace:PropertyApp.Control"
-             x:Class="Homeapp.View.LandingPage"
+             xmlns:ct="clr-namespace:Homeapp.Control"
+XLS0414: The type 'Homeapp.View.LandingPage' was not found. Verify that you are not missing an assembly reference and that all referenced assemblies have been built.
+namespace Homeapp.View
+{
+    public partial class LandingPage : ContentPage
+    {
+        public LandingPage()
+        {
+            InitializeComponent();
+        }
+    }
+}
+x:Class="Homeapp.View.LandingPage"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>

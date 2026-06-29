@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
-using Sytem.Threading.Tasks;    
+using System.Threading.Tasks;    
 
 namespace homeapp.Homes.Control
 {
@@ -10,7 +10,16 @@ namespace homeapp.Homes.Control
     {
         public CustomBorder()
         {
+            TranslationX = new Random().Next(-500, 500);
+            Rotation = Math.Max(TranslationX, 100);
             AddCornerRadius();
+
+            Loaded += async (s, e) =>
+            {
+               await this.TranslateToAsync(x: 0, y: 0, length: 1000, easing: Easing.SinInOut);
+await this.RotateToAsync(rotation: 0, length: 1000, easing: Easing.SinInOut);
+
+            };
         }
         private List<int> CornerValues = new List<int> { 10, 40, 70, 10};
         private void AddCornerRadius()
