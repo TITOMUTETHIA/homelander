@@ -31,4 +31,17 @@ public partial class DetailsPage : ContentPage
         popView.TranslationY = 300;
         popView.Opacity = 0.5   ;
     }
+
+    private async Task FadeAndTranslateView(VisualElement view, uint fadeLength = 1000, uint translateLength = 1500)
+    {
+        await view.FadeTo(1, fadeLength, Easing.SinInOut);
+        await view.ScaleToAsync(1, translateLength, Easing.SinInOut);
+    }
+
+    private async Task FadeAndScale(VisualElement view, uint fadeLength = 1000, uint scaleLength = 1500)
+    {
+        await view.FadeTo(1, fadeLength, Easing.SinInOut);
+        await view.ScaleToAsync(1, scaleLength, Easing.SinInOut);
+    }
+}
 }
