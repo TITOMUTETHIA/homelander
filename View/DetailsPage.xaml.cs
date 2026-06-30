@@ -1,3 +1,4 @@
+using Android.Widget;
 using homeapp.ViewModel;
 
 namespace homeapp.Resources.View;
@@ -12,6 +13,21 @@ public partial class DetailsPage : ContentPage
         viewModel.MoreItems = SelectedHome.Images.Count - 2;    
         this.BindingContext = viewModel;
         SetViewPositions();
+        Loaded += (s, e) =>
+        {
+            FadeAndScale(detailsBtn);
+            RotateView(detailsBtn);
+            FadeAndTranslate(imagesView);
+
+            Task.Delay(millisecondsDelay: 500);
+            {
+                FadeAndTranslate(addressView, fadelength: 1000, translateLength: 1500);
+                FadeAndScale(buyBtn, fadelength: 1000, scaleLength: 1500);
+                FadeAndTranslate(popView, fadelength: 1000, translateLength: 1500);
+            }
+        }})
+        };
+    })
     }
     private void SetViewPositions()
     {
@@ -31,17 +47,19 @@ public partial class DetailsPage : ContentPage
         popView.TranslationY = 300;
         popView.Opacity = 0.5   ;
     }
+}
 
-    private async Task FadeAndTranslateView(VisualElement view, uint fadeLength = 1000, uint translateLength = 1500)
+pivate void FadeAndTranslateView(VisualElement view, uint fadeLength = 1000, uint translateLength = 1500)
     {
-        await view.FadeTo(1, fadeLength, Easing.SinInOut);
-        await view.ScaleToAsync(1, translateLength, Easing.SinInOut);
+     view.FadeTo(Opacity: 1, fadeLength, Easing.SinInOut);
+     view.ScaleTo(scale: 1, translateLength, Easing.SinInOut);
+    }
+    private void FadeAndScale(VisualElement view, uint fadeLength = 1000, uint scaleLength = 1500)
+    {
+        view.FadeTo(Opacity: 1, fadeLength, Easing.SinInOut);
+        view.ScaleTo(scale: 1, scaleLength, Easing.SinInOut);
     }
 
-    private async Task FadeAndScale(VisualElement view, uint fadeLength = 1000, uint scaleLength = 1500)
-    {
-        await view.FadeTo(1, fadeLength, Easing.SinInOut);
-        await view.ScaleToAsync(1, scaleLength, Easing.SinInOut);
-    }
+    private void RotateView(VisualElement view)=>view.RotateTo(rotation: 0, length: 1500, easing: Easing.SinInOut);)
 }
 }
