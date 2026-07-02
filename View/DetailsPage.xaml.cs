@@ -91,21 +91,26 @@ namespace homeapp.Resources.View
             }
         }
 
-        private async Task FadeAndTranslate(VisualElement view, uint fadelength = 1000, uint translateLength = 1500)
+        private static async Task FadeAndTranslate(VisualElement view, uint fadelength = 1000, uint translateLength = 1500)
         {
-            // fade and translate/scale as intended (adjust to desired animation)
-            var fadeTask = view.FadeTo(1, fadelength, Easing.SinInOut);
-            var translateTask = view.TranslateTo(0, 0, translateLength, Easing.SinInOut);
+            var fadeTask = view.FadeToAsync(1, fadelength, Easing.SinInOut);
+            var translateTask = view.TranslateToAsync(0, 0, translateLength, Easing.SinInOut);
             await Task.WhenAll(fadeTask, translateTask);
         }
 
-        private async Task FadeAndScale(VisualElement view, uint fadelength = 1000, uint scaleLength = 1500)
+        private static async Task FadeAndScale(VisualElement view, uint fadelength = 1000, uint scaleLength = 1500)
         {
-            var fadeTask = view.FadeTo(1, fadelength, Easing.SinInOut);
-            var scaleTask = view.ScaleTo(1, scaleLength, Easing.SinInOut);
+            var fadeTask = view.FadeToAsync(1, fadelength, Easing.SinInOut);
+            var scaleTask = view.ScaleToAsync(1, scaleLength, Easing.SinInOut);
             await Task.WhenAll(fadeTask, scaleTask);
         }
 
-        private Task RotateView(VisualElement view) => view.RotateTo(0, 1500, Easing.SinInOut);
+        // Option A: if RotateToAsync returns Task
+        private static Task RotateView(VisualElement view) =>
+            view.RotateToAsync(0, 1500, Easing.SinInOut);
+
+        // Option B: if RotateToAsync returns Task<bool> (recommended by CA1859)
+        // private static Task<bool> RotateView(VisualElement view) =>
+        //     view.RotateToAsync(0, 1500, Easing.SinInOut);
     }
 }
