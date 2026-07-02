@@ -11,9 +11,14 @@ public partial class DetailsPage : ContentPage
 	public DetailsPage(Model.Home SelectedHome)
 	{
         InitializeComponent();
-        var viewModel = new DetailsViewModel () { SelectedHome = SelectedHome, HomeImages};
-        viewModel.HomeImages = SelectedHome.Images.Take(count:2).ToList();
-        viewModel.MoreItems = SelectedHome.Images.Count - 2;    
+
+        var viewModel = new DetailsViewModel
+        {
+            SelectedProperty = SelectedHome,
+            HomeImages = SelectedHome.Images.Take(2).ToList(),
+            MoreItems = SelectedHome.Images.Count - 2
+        };
+
         this.BindingContext = viewModel;
         SetViewPositions();
         Loaded += (s, e) =>
@@ -28,8 +33,13 @@ public partial class DetailsPage : ContentPage
                 FadeAndScale(buyBtn, fadelength: 1000, scaleLength: 1500);
                 FadeAndTranslate(popView, fadelength: 1000, translateLength: 1500);
             }
-        }})
         };
+    }
+    private void InitializeComponent()
+    {
+        throw new NotImplementedException();
+    }
+};
     })
     }
     private void SetViewPositions()
