@@ -118,3 +118,6 @@ C:\Users\BIGFISH\source\repos\homeapp\homeapp\obj\Debug\net10.0-android\homeapp.
 C:\Users\BIGFISH\source\repos\homeapp\homeapp\obj\Debug\net10.0-android\homeapp.AssemblyInfo.cs
 C:\Users\BIGFISH\source\repos\homeapp\homeapp\obj\Debug\net10.0-android\homeapp.csproj.CoreCompileInputs.cache
 C:\Users\BIGFISH\source\repos\homeapp\homeapp\obj\Debug\net10.0-android\homeapp.sourcelink.json
+C:\Users\BIGFISH\source\repos\homeapp\homeapp\obj\Debug\net10.0-android\resizetizer\r\drawable\arrow.png
+C:\Users\BIGFISH\source\repos\homeapp\homeapp\obj\Debug\net10.0-android\resizetizer\r\drawable\close.png
+C:\Users\BIGFISH\source\repos\homeapp\homeapp\obj\Debug\net10.0-android\resizetizer\r\drawable\map.png

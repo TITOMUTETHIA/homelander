@@ -1,5 +1,8 @@
-using Android.Widget;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 using homeapp.ViewModel;
+using Microsoft.Maui.Controls; // or Xamarin.Forms if this is a Xamarin.Forms project
 
 namespace homeapp.Resources.View;
 

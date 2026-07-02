@@ -13,7 +13,18 @@ namespace homeapp.ViewModel
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public ICommand CloeCommand => new Command(() => Application.Current.MainPage.Navigation.PopAsync());
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822:Mark members as static", Justification = "Used for data binding")]
+        public ICommand CloeCommand => new Command(async () =>
+        {
+            var app = Application.Current;
+            if (app?.Windows != null && app.Windows.Count > 0)
+            {
+                var page = app.Windows[0].Page;
+                var nav = page?.Navigation;
+                if (nav != null)
+                    await nav.PopAsync();
+            }
+        });
         public event PropertyChangedEventHandler? PropertyChanged;
 
         public void OnPropertyChanged([CallerMemberName] string propertyName = null)

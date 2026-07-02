@@ -4,27 +4,30 @@ using System.Linq;
 using System.Threading.Tasks;  
 using System.Collections.Generic;
 using System;
+using homeapp.Model;
+using homeapp.Resources.View;
 
 namespace homeapp.ViewModel
 {
     public class LandingViewModel : BaseViewModel
     {
-        public List<String> Section => new List<string> { "Trending", "Popular", "Buy", "Rent" };
+        public List<string> Section => new List<string> { "Trending", "Popular", "Buy", "Rent" };
         public List<Home> Homes => HomeRepo.GetHomes();
-        public Home SelectedHome
+        public Home? SelectedHome { get; set; }
+        public ICommand HomeSelectedCommand => new Command(async obj =>
         {
-            get; set;
-        }
-        public ICommand HomeSelectedCommand => new Command(obj =>
+            var home = SelectedHome;
+            if (home == null)
+                return;
 
-        {
-            if (SelectedHome != null)
+            // Use current application's first window's Page (single-window scenario).
+            var navigation = App.Current?.Windows?.FirstOrDefault()?.Page?.Navigation;
+            if (navigation != null)
             {
-                // Navigate to the details page with the selected home
-                App.Current.MainPage.Navigation.PushAsync(new DetailsPage(SelectedHome));
+                await navigation.PushAsync(new DetailsPage(home));
+                SelectedHome = null; // Reset the selected home after navigation
             }
-            SelectedHome = null; // Reset the selected home after navigation
-        }
-        )
+            // If navigation is null, do nothing (or consider logging / alternative fallback).
+        });
     }
 }

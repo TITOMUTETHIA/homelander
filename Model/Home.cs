@@ -8,10 +8,10 @@ namespace homeapp.Model
 {
     public class Home
     {
-        public string DefaultImage { get; set; }
-        public string Address { get; set; }
-        public decimal Price { get; set; }
-        public List<string> Images { get; set; }>
-        
+        public required string DefaultImage { get; set; }
+        public required string Address { get; set; }
+        public required decimal Price { get; set; }
+        public List<string> Images { get; set; } = new List<string>();
+
     }
 }
