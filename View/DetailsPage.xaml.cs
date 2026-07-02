@@ -7,6 +7,13 @@ namespace homeapp.Resources.View
 {
     public partial class DetailsPage : ContentPage
     {
+        // fields
+        private VisualElement? detailsBtn;
+        private VisualElement? imagesView;
+        private VisualElement? addressView;
+        private VisualElement? buyBtn;
+        private VisualElement? popView;
+
         public DetailsPage(Model.Home SelectedHome)
         {
             InitializeComponent();
@@ -23,37 +30,65 @@ namespace homeapp.Resources.View
 
             Loaded += async (s, e) =>
             {
-                // start some animations immediately
-                _ = FadeAndScale(detailsBtn);
-                _ = RotateView(detailsBtn);
-                _ = FadeAndTranslate(imagesView);
+                if (detailsBtn != null)
+                {
+                    _ = FadeAndScale(detailsBtn);
+                    _ = RotateView(detailsBtn);
+                }
+
+                if (imagesView != null)
+                    _ = FadeAndTranslate(imagesView);
 
                 await Task.Delay(500);
 
-                await FadeAndTranslate(addressView, fadelength: 1000, translateLength: 1500);
-                await FadeAndScale(buyBtn, fadelength: 1000, scaleLength: 1500);
-                await FadeAndTranslate(popView, fadelength: 1000, translateLength: 1500);
+                if (addressView != null)
+                    await FadeAndTranslate(addressView, fadelength: 1000, translateLength: 1500);
+
+                if (buyBtn != null)
+                    await FadeAndScale(buyBtn, fadelength: 1000, scaleLength: 1500);
+
+                if (popView != null)
+                    await FadeAndTranslate(popView, fadelength: 1000, translateLength: 1500);
             };
+        }
+
+        private void InitializeComponent()
+        {
+            throw new NotImplementedException();
         }
 
         private void SetViewPositions()
         {
-            // Implementation for setting view positions
-            detailsBtn.Opacity = 0;
-            detailsBtn.Scale = 0.2;
-            detailsBtn.Rotation = 300;
+            if (detailsBtn != null)
+            {
+                detailsBtn.Opacity = 0;
+                detailsBtn.Scale = 0.2;
+                detailsBtn.Rotation = 300;
+            }
 
-            imagesView.TranslationX = 300;
-            imagesView.Opacity = 0;
+            if (imagesView != null)
+            {
+                imagesView.TranslationX = 300;
+                imagesView.Opacity = 0;
+            }
 
-            addressView.TranslationX = addressView.TranslationY = -30;
-            addressView.Opacity = 0;
+            if (addressView != null)
+            {
+                addressView.TranslationX = addressView.TranslationY = -30;
+                addressView.Opacity = 0;
+            }
 
-            buyBtn.Opacity = 0;
-            buyBtn.Scale = 0.2;
+            if (buyBtn != null)
+            {
+                buyBtn.Opacity = 0;
+                buyBtn.Scale = 0.2;
+            }
 
-            popView.TranslationY = 300;
-            popView.Opacity = 0.5;
+            if (popView != null)
+            {
+                popView.TranslationY = 300;
+                popView.Opacity = 0.5;
+            }
         }
 
         private async Task FadeAndTranslate(VisualElement view, uint fadelength = 1000, uint translateLength = 1500)
