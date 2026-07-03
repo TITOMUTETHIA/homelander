@@ -1,7 +1,7 @@
 ﻿using System.Windows.Input;
 using homeapp.View;
 using System.Linq;
-using System.Threading.Tasks;  
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using System;
 using homeapp.Model;

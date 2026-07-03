@@ -1,36 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.Maui.Controls.Shapes;
+using Microsoft.Maui.Controls;
 
 namespace homeapp.Homes.Control
 {
-    public class CustomBorder : Border  
+    public partial class CustomBorder : Border
     {
+        private static readonly List<int> CornerValues = new List<int> { 10, 40, 70, 10 };
+
         public CustomBorder()
         {
-            TranslationX = new Random().Next(-500, 500);
-            Rotation = Math.Max(TranslationX, 100);
+            TranslationX = Random.Shared.Next(-500, 500);
+            Rotation = Random.Shared.Next(-10, 10);
             AddCornerRadius();
 
             Loaded += async (s, e) =>
             {
-               await this.TranslateToAsync(x: 0, y: 0, length: 1000, easing: Easing.SinInOut);
-await this.RotateToAsync(rotation: 0, length: 1000, easing: Easing.SinInOut);
-
+                await this.TranslateToAsync(x: 0, y: 0, length: 1000, easing: Easing.SinInOut);
+                await this.RotateToAsync(rotation: 0, length: 1000, easing: Easing.SinInOut);
             };
         }
-        private List<int> CornerValues = new List<int> { 10, 40, 70, 10};
+
         private void AddCornerRadius()
         {
-            var index = new Random().Next(maxValue: 4);
-            StrokeShape = new RoundRectangle
-            {
-                CornerRadius = new CornerRadius(CornerValues[index])
-            };
-
+            int index = Random.Shared.Next(CornerValues.Count);
+            CornerRadius = new CornerRadius(CornerValues[index]);
         }
     }
 }
