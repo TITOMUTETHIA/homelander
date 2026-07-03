@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.Maui;
 using Microsoft.Maui.Controls;
 
 namespace homeapp.Homes.Control
 {
-    public partial class CustomBorder : Border
+    public class CustomBorder : Border
     {
         private static readonly List<int> CornerValues = new List<int> { 10, 40, 70, 10 };
 
@@ -13,12 +15,23 @@ namespace homeapp.Homes.Control
             TranslationX = Random.Shared.Next(-500, 500);
             Rotation = Random.Shared.Next(-10, 10);
             AddCornerRadius();
+        }
 
-            Loaded += async (s, e) =>
+        protected override void OnHandlerChanged()
+        {
+            base.OnHandlerChanged();
+
+            if (Handler != null)
             {
-                await this.TranslateToAsync(x: 0, y: 0, length: 1000, easing: Easing.SinInOut);
-                await this.RotateToAsync(rotation: 0, length: 1000, easing: Easing.SinInOut);
-            };
+                // View attached to a handler — run entrance animation
+                _ = RunEntranceAnimationAsync();
+            }
+        }
+
+        private async Task RunEntranceAnimationAsync()
+        {
+            await this.TranslateTo(x: 0, y: 0, length: 1000u, easing: Easing.SinInOut);
+            await this.RotateTo(rotation: 0, length: 1000u, easing: Easing.SinInOut);
         }
 
         private void AddCornerRadius()
