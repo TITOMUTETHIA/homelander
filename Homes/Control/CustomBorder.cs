@@ -17,17 +17,23 @@ namespace homeapp.Homes.Control
             AddCornerRadius();
         }
 
-        protected override void OnHandlerChanged()
+        protected override object? GetHandler()
         {
-            base.OnHandlerChanged();
+            return Handler;
+        }
 
-            if (Handler != null)
+        protected override void OnHandlerChanged(object? newHandler)
+        {
+            base.OnHandlerChanged(            base.GetHandler());
+
+            if (newHandler != null)
             {
-                // View attached to a handler — run entrance animation
+                // View attached to a newHandler — run entrance animation
                 _ = RunEntranceAnimationAsync();
             }
         }
 
+        [Obsolete]
         private async Task RunEntranceAnimationAsync()
         {
             await this.TranslateTo(0, 0, 1000u, Easing.SinInOut);
