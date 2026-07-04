@@ -30,14 +30,14 @@ namespace homeapp.Homes.Control
 
         private async Task RunEntranceAnimationAsync()
         {
-            await this.TranslateTo(x: 0, y: 0, length: 1000u, easing: Easing.SinInOut);
-            await this.RotateTo(rotation: 0, length: 1000u, easing: Easing.SinInOut);
+            await this.TranslateTo(0, 0, 1000u, Easing.SinInOut);
+            await this.RotateTo(0, 1000u, Easing.SinInOut);
         }
 
         private void AddCornerRadius()
         {
             int index = Random.Shared.Next(CornerValues.Count);
-            CornerRadius = new CornerRadius(CornerValues[index]);
+            this.CornerRadius = new Microsoft.Maui.CornerRadius(CornerValues[index]);
         }
     }
 }
