@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Microsoft.Maui;
+using Microsoft.Maui.Controls;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.Maui;
-using Microsoft.Maui.Controls;
 
 namespace homeapp.Homes.Control
 {
