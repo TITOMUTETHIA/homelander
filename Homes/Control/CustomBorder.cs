@@ -22,12 +22,15 @@ namespace homeapp.Homes.Control
             return Handler;
         }
 
-        protected override void OnHandlerChanged(object? newHandler)
+        [Obsolete]
+        protected void OnHandlerChanged(object? newHandler)
         {
             base.OnHandlerChanged();
 
             if (Handler != null)
             {
+                // View attached to a handler — run entrance animation
+                using var _ =
                 // View attached to a handler — run entrance animation
                 _ = RunEntranceAnimationAsync();
             }
@@ -44,6 +47,19 @@ namespace homeapp.Homes.Control
         {
             int index = Random.Shared.Next(CornerValues.Count);
             this.CornerRadius = new Microsoft.Maui.CornerRadius(CornerValues[index]);
+        }
+
+        public static readonly BindableProperty CornerRadiusProperty =
+            BindableProperty.Create(
+                nameof(CornerRadius),
+                typeof(Microsoft.Maui.CornerRadius),
+                typeof(CustomBorder),
+                default(Microsoft.Maui.CornerRadius));
+
+        public Microsoft.Maui.CornerRadius CornerRadius
+        {
+            get => (Microsoft.Maui.CornerRadius)GetValue(CornerRadiusProperty);
+            set => SetValue(CornerRadiusProperty, value);
         }
     }
 }
