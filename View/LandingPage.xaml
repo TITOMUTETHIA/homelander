@@ -1,14 +1,81 @@
-namespace Homeapp.View
-{
-    public partial class LandingPage : ContentView
-    {
-        public LandingPage()
-        {
-            InitializeComponent();
-        }
-    }
-}
-namespace Homeapp.Control
-{
-    public class CustomBorder : ContentView { /* ... */ }
-}
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HomeApp.View.LandingPage"
+             Title="Landing Page">
+    <VerticalStackLayout Spacing="20" Padding="20">
+        <Label Text="Welcome to Home App"
+               FontSize="24"
+               FontAttributes="Bold"
+               HorizontalTextAlignment="Center" />
+
+        <!-- Add your UI controls here -->  
+        <BoxView Color="LightGray" HeightRequest="1" />
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HomeApp.View.LandingPage"
+             Title="Home">
+    <Grid RowDefinitions="Auto,*" Padding="0">
+        <!-- Section Navigation -->
+        <CollectionView x:Name="SectionList"
+                        SelectionMode="Single"
+                        ItemsSource="{Binding Section}"
+                        SelectionChangedCommand="{Binding SectionSelectedCommand}"
+                        Margin="20,10">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="15" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <RadioButton Content="{Binding .}" 
+                                 Value="{Binding .}"
+                                 Margin="0" />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Homes Grid -->
+        <CollectionView Grid.Row="1"
+                        ItemsSource="{Binding Homes}"
+                        SelectionMode="Single"
+                        SelectionChangedCommand="{Binding HomeSelectedCommand}"
+                        SelectionChangedCommandParameter="{Binding SelectedItem, Source={RelativeSource Self}}">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                HorizontalItemSpacing="10"
+                                VerticalItemSpacing="10"
+                                Columns="2" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border StrokeShape="RoundedRectangle 15"
+                            StrokeThickness="0"
+                            Padding="0"
+                            Margin="10">
+                        <Grid RowDefinitions="150,Auto,Auto">
+                            <Image Source="{Binding DefaultImage}"
+                                   Aspect="AspectFill" />
+                            <Label Grid.Row="1"
+                                   Text="{Binding Address}"
+                                   Padding="10,5"
+                                   FontSize="14"
+                                   FontAttributes="Bold" />
+                            <Label Grid.Row="2"
+                                   Text="{Binding Price, StringFormat='${0:###,###}'}"
+                                   Padding="10,0,10,10"
+                                   FontSize="12"
+                                   Opacity="0.7" />
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
+        <CollectionView x:Name="SectionList"
+                        SelectionMode="Single">
+            <!-- Your sections will go here -->
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>
