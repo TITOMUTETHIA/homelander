@@ -23,14 +23,12 @@ namespace homeapp.Homes.Control
         }
 
         [Obsolete]
-        protected void OnHandlerChanged(object? newHandler)
+        protected override void OnHandlerChanged()
         {
             base.OnHandlerChanged();
 
             if (Handler != null)
             {
-                // View attached to a handler — run entrance animation
-                using var _ =
                 // View attached to a handler — run entrance animation
                 _ = RunEntranceAnimationAsync();
             }
