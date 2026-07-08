@@ -1,4 +1,5 @@
 ﻿using HomeApp.View;
+using homeapp;
 
 namespace homeapp
 {
@@ -7,7 +8,7 @@ namespace homeapp
         public App()
         {
             InitializeComponent();
-            // Do not set MainPage here (deprecated)
+            MainPage = new AppShell();
         }
 
         protected override Window CreateWindow(IActivationState? activationState)
