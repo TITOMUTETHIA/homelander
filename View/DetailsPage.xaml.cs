@@ -106,7 +106,64 @@ namespace homeapp.Resources.View
         }
 
         // Option A: if RotateToAsync returns Task
-        private static Task RotateView(VisualElement view) =>
+        private static Task RotateView(VisualElement view) =>using System.Linq;
+using System.Threading.Tasks;
+using homeapp.ViewModel;
+using Microsoft.Maui.Controls;
+using homeapp.Model;
+
+namespace homeapp.View  // Changed from homeapp.Resources.View
+{
+    public partial class DetailsPage : ContentPage
+    {
+        // fields
+        private VisualElement? detailsBtn;
+        private VisualElement? imagesView;
+        private VisualElement? addressView;
+        private VisualElement? buyBtn;
+        private VisualElement? popView;
+
+        public DetailsPage(Home SelectedHome)
+        {
+            InitializeComponent();
+
+            var viewModel = new DetailsViewModel
+            {
+                SelectedProperty = SelectedHome,
+                HomeImages = SelectedHome.Images.Take(2).ToList(),
+                MoreItems = SelectedHome.Images.Count - 2
+            };
+
+            this.BindingContext = viewModel;
+            SetViewPositions();
+
+            Loaded += async (s, e) =>
+            {
+                if (detailsBtn != null)
+                {
+                    _ = FadeAndScale(detailsBtn);
+                    _ = RotateView(detailsBtn);
+                }
+
+                if (imagesView != null)
+                    _ = FadeAndTranslate(imagesView);
+
+                await Task.Delay(500);
+
+                if (addressView != null)
+                    await FadeAndTranslate(addressView, fadelength: 1000, translateLength: 1500);
+
+                if (buyBtn != null)
+                    await FadeAndScale(buyBtn, fadelength: 1000, scaleLength: 1500);
+
+                if (popView != null)
+                    await FadeAndTranslate(popView, fadelength: 1500, translateLength: 2000);
+            };
+        }
+        
+        // ... rest of your code
+    }
+}
             view.RotateToAsync(0, 1500, Easing.SinInOut);
 
         // Option B: if RotateToAsync returns Task<bool> (recommended by CA1859)
