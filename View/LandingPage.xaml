@@ -2,19 +2,6 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="HomeApp.View.LandingPage"
-             Title="Landing Page">
-    <VerticalStackLayout Spacing="20" Padding="20">
-        <Label Text="Welcome to Home App"
-               FontSize="24"
-               FontAttributes="Bold"
-               HorizontalTextAlignment="Center" />
-
-        <!-- Add your UI controls here -->  
-        <BoxView Color="LightGray" HeightRequest="1" />
-<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="HomeApp.View.LandingPage"
              Title="Home">
     <Grid RowDefinitions="Auto,*" Padding="0">
         <!-- Section Navigation -->
@@ -72,10 +59,4 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
     </Grid>
-</ContentPage>
-        <CollectionView x:Name="SectionList"
-                        SelectionMode="Single">
-            <!-- Your sections will go here -->
-        </CollectionView>
-    </VerticalStackLayout>
 </ContentPage>

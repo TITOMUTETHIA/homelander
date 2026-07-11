@@ -15,18 +15,13 @@ namespace homeapp.Homes.Control
             TranslationX = Random.Shared.Next(-500, 500);
             Rotation = Random.Shared.Next(-10, 10);
             AddCornerRadius();
+
+            // Subscribe to handler changed event
+            HandlerChanged += OnCustomHandlerChanged;
         }
 
-        protected object? GetHandler()
+        private void OnCustomHandlerChanged(object? sender, EventArgs e)
         {
-            return Handler;
-        }
-
-        [Obsolete]
-        protected override void OnHandlerChanged()
-        {
-            base.OnHandlerChanged();
-
             if (Handler != null)
             {
                 // View attached to a handler — run entrance animation
@@ -34,11 +29,15 @@ namespace homeapp.Homes.Control
             }
         }
 
-        [Obsolete]
+        protected object? GetHandler()
+        {
+            return Handler;
+        }
+
         private async Task RunEntranceAnimationAsync()
         {
-            await this.TranslateTo(0, 0, 1000u, Easing.SinInOut);
-            await this.RotateTo(0, 1000u, Easing.SinInOut);
+            await this.TranslateToAsync(0, 0, 1000u, Easing.SinInOut);
+            await this.RotateToAsync(0, 1000u, Easing.SinInOut);
         }
 
         private void AddCornerRadius()
