@@ -517,3 +517,9 @@ C:\Users\BIGFISH\source\repos\homeapp\homeapp\obj\Debug\net10.0-windows10.0.1904
 C:\Users\BIGFISH\source\repos\homeapp\homeapp\obj\Debug\net10.0-windows10.0.19041.0\win-x64\qualifiers.txt
 C:\Users\BIGFISH\source\repos\homeapp\homeapp\obj\Debug\net10.0-windows10.0.19041.0\win-x64\qualifiers.txt.intermediate
 C:\Users\BIGFISH\source\repos\homeapp\homeapp\obj\Debug\net10.0-windows10.0.19041.0\win-x64\MultipleQualifiersPerDimensionFound.txt
+C:\Users\BIGFISH\source\repos\homeapp\homeapp\bin\Debug\net10.0-windows10.0.19041.0\win-x64\arrow.scale-100.png
+C:\Users\BIGFISH\source\repos\homeapp\homeapp\bin\Debug\net10.0-windows10.0.19041.0\win-x64\close.scale-100.png
+C:\Users\BIGFISH\source\repos\homeapp\homeapp\bin\Debug\net10.0-windows10.0.19041.0\win-x64\map.scale-100.png
+C:\Users\BIGFISH\source\repos\homeapp\homeapp\obj\Debug\net10.0-windows10.0.19041.0\win-x64\resizetizer\r\arrow.scale-100.png
+C:\Users\BIGFISH\source\repos\homeapp\homeapp\obj\Debug\net10.0-windows10.0.19041.0\win-x64\resizetizer\r\close.scale-100.png
+C:\Users\BIGFISH\source\repos\homeapp\homeapp\obj\Debug\net10.0-windows10.0.19041.0\win-x64\resizetizer\r\map.scale-100.png

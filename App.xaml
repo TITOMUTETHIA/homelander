@@ -12,26 +12,3 @@
         </ResourceDictionary>
     </Application.Resources>
 </Application>
-````````
-
-````````csharp
-using HomeApp.View;
-using homeapp;
-
-namespace homeapp
-{
-    public partial class App : Application
-    {
-        public App()
-        {
-            InitializeComponent();
-            // Do not set MainPage here - CreateWindow is the new entry point.
-        }
-
-        protected override Window CreateWindow(IActivationState? activationState)
-        {
-            // Use the Shell as the window's root if your app is Shell-based.
-            return new Window(new AppShell());
-        }
-    }
-}
