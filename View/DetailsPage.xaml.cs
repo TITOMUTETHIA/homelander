@@ -1,31 +1,32 @@
+using System;
 using System.Linq;
 using System.Threading.Tasks;
+using homeapp.Model;
 using homeapp.ViewModel;
-using Microsoft.Maui.Controls; // or Xamarin.Forms if this is a Xamarin.Forms project
+using Microsoft.Maui.Controls;
 
-namespace homeapp.Resources.View
+namespace homeapp.View
 {
     public partial class DetailsPage : ContentPage
     {
-        // fields
         private VisualElement? detailsBtn;
         private VisualElement? imagesView;
         private VisualElement? addressView;
         private VisualElement? buyBtn;
         private VisualElement? popView;
 
-        public DetailsPage(Model.Home SelectedHome)
+        public DetailsPage(Home selectedHome)
         {
             InitializeComponent();
 
             var viewModel = new DetailsViewModel
             {
-                SelectedProperty = SelectedHome,
-                HomeImages = SelectedHome.Images.Take(2).ToList(),
-                MoreItems = SelectedHome.Images.Count - 2
+                SelectedProperty = selectedHome,
+                HomeImages = selectedHome.Images.Take(2).ToList(),
+                MoreItems = Math.Max(0, selectedHome.Images.Count - 2)
             };
 
-            this.BindingContext = viewModel;
+            BindingContext = viewModel;
             SetViewPositions();
 
             Loaded += async (s, e) =>
@@ -37,24 +38,27 @@ namespace homeapp.Resources.View
                 }
 
                 if (imagesView != null)
+                {
                     _ = FadeAndTranslate(imagesView);
+                }
 
                 await Task.Delay(500);
 
                 if (addressView != null)
-                    await FadeAndTranslate(addressView, fadelength: 1000, translateLength: 1500);
+                {
+                    await FadeAndTranslate(addressView, 1000, 1500);
+                }
 
                 if (buyBtn != null)
-                    await FadeAndScale(buyBtn, fadelength: 1000, scaleLength: 1500);
+                {
+                    await FadeAndScale(buyBtn, 1000, 1500);
+                }
 
                 if (popView != null)
-                    await FadeAndTranslate(popView, fadelength: 1000, translateLength: 1500);
+                {
+                    await FadeAndTranslate(popView, 1000, 1500);
+                }
             };
-        }
-
-        private void InitializeComponent()
-        {
-            throw new NotImplementedException();
         }
 
         private void SetViewPositions()
@@ -74,7 +78,8 @@ namespace homeapp.Resources.View
 
             if (addressView != null)
             {
-                addressView.TranslationX = addressView.TranslationY = -30;
+                addressView.TranslationX = -30;
+                addressView.TranslationY = -30;
                 addressView.Opacity = 0;
             }
 
@@ -105,69 +110,11 @@ namespace homeapp.Resources.View
             await Task.WhenAll(fadeTask, scaleTask);
         }
 
-        // Option A: if RotateToAsync returns Task
-        private static Task RotateView(VisualElement view) =>using System.Linq;
-using System.Threading.Tasks;
-using homeapp.ViewModel;
-using Microsoft.Maui.Controls;
-using homeapp.Model;
+        private static Task RotateView(VisualElement view) => view.RotateToAsync(0, 1500, Easing.SinInOut);
 
-namespace homeapp.View  // Changed from homeapp.Resources.View
-{
-    public partial class DetailsPage : ContentPage
-    {
-        // fields
-        private VisualElement? detailsBtn;
-        private VisualElement? imagesView;
-        private VisualElement? addressView;
-        private VisualElement? buyBtn;
-        private VisualElement? popView;
-
-        public DetailsPage(Home SelectedHome)
+        private async void OnContactAgentClicked(object? sender, EventArgs e)
         {
-            InitializeComponent();
-
-            var viewModel = new DetailsViewModel
-            {
-                SelectedProperty = SelectedHome,
-                HomeImages = SelectedHome.Images.Take(2).ToList(),
-                MoreItems = SelectedHome.Images.Count - 2
-            };
-
-            this.BindingContext = viewModel;
-            SetViewPositions();
-
-            Loaded += async (s, e) =>
-            {
-                if (detailsBtn != null)
-                {
-                    _ = FadeAndScale(detailsBtn);
-                    _ = RotateView(detailsBtn);
-                }
-
-                if (imagesView != null)
-                    _ = FadeAndTranslate(imagesView);
-
-                await Task.Delay(500);
-
-                if (addressView != null)
-                    await FadeAndTranslate(addressView, fadelength: 1000, translateLength: 1500);
-
-                if (buyBtn != null)
-                    await FadeAndScale(buyBtn, fadelength: 1000, scaleLength: 1500);
-
-                if (popView != null)
-                    await FadeAndTranslate(popView, fadelength: 1500, translateLength: 2000);
-            };
+            await DisplayAlert("Contact Agent", "This feature is coming soon.", "OK");
         }
-        
-        // ... rest of your code
-    }
-}
-            view.RotateToAsync(0, 1500, Easing.SinInOut);
-
-        // Option B: if RotateToAsync returns Task<bool> (recommended by CA1859)
-        // private static Task<bool> RotateView(VisualElement view) =>
-        //     view.RotateToAsync(0, 1500, Easing.SinInOut);
     }
 }
