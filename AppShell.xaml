@@ -6,9 +6,16 @@
     xmlns:local="clr-namespace:homeapp.View"
     Title="Home App">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:LandingPage}"
-        Route="landing" />
+    <TabBar>
+        <ShellContent
+            Title="Home"
+            ContentTemplate="{DataTemplate local:LandingPage}"
+            Route="landing" />
+
+        <ShellContent
+            Title="Admin"
+            ContentTemplate="{DataTemplate local:AdminDashboard}"
+            Route="admin" />
+    </TabBar>
 
 </Shell>

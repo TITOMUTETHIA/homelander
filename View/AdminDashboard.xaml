@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="homeapp.View.AdminDashboard"
+             x:Name="ThisPage"
+             Title="Admin Dashboard"
+             BackgroundColor="#FFFFFF">
+    <ScrollView>
+        <VerticalStackLayout Padding="16" Spacing="16">
+            <Label Text="Admin Dashboard" FontSize="24" FontAttributes="Bold" TextColor="#1F2937" />
+
+            <!-- Stats -->
+            <HorizontalStackLayout Spacing="12">
+                <Frame CornerRadius="8" Padding="12" BackgroundColor="#F3F4F6" HasShadow="False">
+                    <VerticalStackLayout>
+                        <Label Text="Total Listings" FontSize="12" TextColor="#6B7280" />
+                        <Label Text="{Binding TotalListings}" FontSize="20" FontAttributes="Bold" TextColor="#111827" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame CornerRadius="8" Padding="12" BackgroundColor="#F3F4F6" HasShadow="False">
+                    <VerticalStackLayout>
+                        <Label Text="Featured" FontSize="12" TextColor="#6B7280" />
+                        <Label Text="{Binding FeaturedCount}" FontSize="20" FontAttributes="Bold" TextColor="#059669" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Button Text="Refresh" Command="{Binding RefreshCommand}" HorizontalOptions="End" />
+            </HorizontalStackLayout>
+
+            <!-- Management controls -->
+            <HorizontalStackLayout Spacing="8">
+                <Picker ItemsSource="{Binding PropertyTypes}" SelectedItem="{Binding SelectedType}" Title="Type" WidthRequest="140" />
+                <Picker ItemsSource="{Binding Cities}" SelectedItem="{Binding SelectedCity}" Title="City" WidthRequest="140" />
+                <Button Text="Filter" Command="{Binding ApplyFilterCommand}" />
+                <Button Text="Clear" Command="{Binding ClearFilterCommand}" BackgroundColor="#6B7280" TextColor="White" />
+            </HorizontalStackLayout>
+
+            <!-- Listings -->
+            <CollectionView ItemsSource="{Binding Listings}" SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame CornerRadius="8" Padding="8" Margin="0,4" HasShadow="True">
+                            <Grid ColumnDefinitions="Auto,*,Auto" RowDefinitions="Auto,Auto">
+                                <Image Source="{Binding DefaultImage}" WidthRequest="90" HeightRequest="70" Aspect="AspectFill" />
+                                <VerticalStackLayout Grid.Column="1" Padding="8,0">
+                                    <Label Text="{Binding Address}" FontAttributes="Bold" />
+                                    <Label Text="{Binding City}" FontSize="12" TextColor="#6B7280" />
+                                    <Label Text="{Binding Price, StringFormat='${0:###,###}'}" FontAttributes="Bold" TextColor="#059669" />
+                                </VerticalStackLayout>
+                                <VerticalStackLayout Grid.Column="2" HorizontalOptions="End" Spacing="8">
+                                    <Button Text="Toggle Featured" Command="{Binding Source={x:Reference ThisPage}, Path=BindingContext.ToggleFeaturedCommand}" CommandParameter="{Binding .}" />
+                                    <Button Text="Delete" BackgroundColor="#DC2626" TextColor="White" Command="{Binding Source={x:Reference ThisPage}, Path=BindingContext.DeleteCommand}" CommandParameter="{Binding .}" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
