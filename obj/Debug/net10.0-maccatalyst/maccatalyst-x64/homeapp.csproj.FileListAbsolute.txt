@@ -309,3 +309,7 @@ C:\Users\BIGFISH\source\repos\homeapp\homeapp\obj\Debug\net10.0-maccatalyst\macc
 C:\Users\BIGFISH\source\repos\homeapp\homeapp\obj\Debug\net10.0-maccatalyst\maccatalyst-x64\homeapp.pdb
 C:\Users\BIGFISH\source\repos\homeapp\homeapp\obj\Debug\net10.0-maccatalyst\maccatalyst-x64\homeapp.genruntimeconfig.cache
 C:\Users\BIGFISH\source\repos\homeapp\homeapp\obj\Debug\net10.0-maccatalyst\maccatalyst-x64\ref\homeapp.dll
+C:\Users\BIGFISH\source\repos\homeapp\homeapp\bin\Debug\net10.0-maccatalyst\maccatalyst-x64\Microsoft.Maui.Controls.HotReload.Forms.dll
+C:\Users\BIGFISH\source\repos\homeapp\homeapp\bin\Debug\net10.0-maccatalyst\maccatalyst-x64\Microsoft.VisualStudio.DesignTools.MobileTapContracts.dll
+C:\Users\BIGFISH\source\repos\homeapp\homeapp\bin\Debug\net10.0-maccatalyst\maccatalyst-x64\Microsoft.VisualStudio.DesignTools.TapContract.dll
+C:\Users\BIGFISH\source\repos\homeapp\homeapp\bin\Debug\net10.0-maccatalyst\maccatalyst-x64\Microsoft.VisualStudio.DesignTools.XamlTapContract.dll

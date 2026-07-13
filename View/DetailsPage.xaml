@@ -44,7 +44,7 @@
                                 <Label Text="{Binding SelectedProperty.Address}" FontSize="20" Opacity="0.5" TextColor="Black" />
                                 <Label Text="{Binding SelectedProperty.Price, StringFormat='Price: {0:###,###}'}" FontSize="Body" FontAttributes="Bold" TextColor="Black" />
                             </VerticalStackLayout>
-                            <Button x:Name="buyBtn" Text="Buy Now" BackgroundColor="#4C65FF" TextColor="White" FontSize="18" CornerRadius="25" HeightRequest="50" HorizontalOptions="Start" />
+                            <Button x:Name="buyBtn" Text="Buy Now" BackgroundColor="#4C65FF" TextColor="White" FontSize="18" CornerRadius="25" HeightRequest="50" HorizontalOptions="Start" Clicked="OnContactAgentClicked" />
                         </VerticalStackLayout>
                     </Grid>
                 </Border>

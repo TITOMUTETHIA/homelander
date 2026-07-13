@@ -105,5 +105,10 @@ namespace homeapp.View
         }
 
         private static Task RotateView(VisualElement view) => view.RotateToAsync(0, 1500, Easing.SinInOut);
+
+        private async void OnContactAgentClicked(object sender, EventArgs e)
+        {
+            await DisplayAlert("Contact", "Agent contact feature coming soon", "OK");
+        }
     }
 }
