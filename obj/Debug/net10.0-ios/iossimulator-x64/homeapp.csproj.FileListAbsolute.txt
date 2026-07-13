@@ -320,7 +320,3 @@ C:\Users\BIGFISH\source\repos\homeapp\homeapp\obj\Debug\net10.0-ios\iossimulator
 C:\Users\BIGFISH\source\repos\homeapp\homeapp\obj\Debug\net10.0-ios\iossimulator-x64\homeapp.pdb
 C:\Users\BIGFISH\source\repos\homeapp\homeapp\obj\Debug\net10.0-ios\iossimulator-x64\homeapp.genruntimeconfig.cache
 C:\Users\BIGFISH\source\repos\homeapp\homeapp\obj\Debug\net10.0-ios\iossimulator-x64\ref\homeapp.dll
-C:\Users\BIGFISH\source\repos\homeapp\homeapp\bin\Debug\net10.0-ios\iossimulator-x64\Microsoft.Maui.Controls.HotReload.Forms.dll
-C:\Users\BIGFISH\source\repos\homeapp\homeapp\bin\Debug\net10.0-ios\iossimulator-x64\Microsoft.VisualStudio.DesignTools.MobileTapContracts.dll
-C:\Users\BIGFISH\source\repos\homeapp\homeapp\bin\Debug\net10.0-ios\iossimulator-x64\Microsoft.VisualStudio.DesignTools.TapContract.dll
-C:\Users\BIGFISH\source\repos\homeapp\homeapp\bin\Debug\net10.0-ios\iossimulator-x64\Microsoft.VisualStudio.DesignTools.XamlTapContract.dll

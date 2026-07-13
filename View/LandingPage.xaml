@@ -2,61 +2,194 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="homeapp.View.LandingPage"
-             Title="Home">
-    <Grid RowDefinitions="Auto,*" Padding="0">
-        <!-- Section Navigation -->
-        <CollectionView x:Name="SectionList"
-                        SelectionMode="Single"
-                        ItemsSource="{Binding Section}"
-                        SelectionChangedCommand="{Binding SectionSelectedCommand}"
-                        Margin="20,10">
-            <CollectionView.ItemsLayout>
-                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="15" />
-            </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <RadioButton Content="{Binding .}" 
-                                 Value="{Binding .}"
-                                 Margin="0" />
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+             Title="Home Listings"
+             BackgroundColor="#F8F9FA"
+             Padding="0">
+    <Grid RowDefinitions="Auto,Auto,Auto,*">
 
-        <!-- Homes Grid -->
-        <CollectionView Grid.Row="1"
+        <!-- Header with branding -->
+        <Grid Grid.Row="0" Padding="16,12" BackgroundColor="White" ColumnDefinitions="*,Auto">
+            <Label Text="Real Estate Pro" 
+                   FontSize="24" 
+                   FontAttributes="Bold" 
+                   TextColor="#1F2937"
+                   VerticalTextAlignment="Center" />
+            <Button Grid.Column="1"
+                    Text="👤" 
+                    BackgroundColor="Transparent"
+                    TextColor="#1F2937"
+                    FontSize="24"
+                    Padding="8" />
+        </Grid>
+
+        <!-- Search and Filters Bar -->
+        <StackLayout Grid.Row="1" Padding="16,12" BackgroundColor="White" Spacing="8">
+
+            <!-- Search Entry -->
+            <SearchBar x:Name="SearchBar"
+                       Text="{Binding SearchTerm}"
+                       Placeholder="Search by city, address..."
+                       PlaceholderColor="#9CA3AF"
+                       CancelButtonColor="#6B7280"
+                       BackgroundColor="#F3F4F6"
+                       TextColor="#1F2937" />
+
+            <!-- Filter Chips -->
+            <HorizontalStackLayout Spacing="8">
+                <Picker x:Name="CategoryPicker"
+                        ItemsSource="{Binding Categories}"
+                        SelectedItem="{Binding SelectedCategory}"
+                        Title="Category"
+                        WidthRequest="120"
+                        BackgroundColor="#E5E7EB"
+                        TextColor="#1F2937" />
+
+                <Picker x:Name="CityPicker"
+                        ItemsSource="{Binding Cities}"
+                        SelectedItem="{Binding SelectedCity}"
+                        Title="City"
+                        WidthRequest="120"
+                        BackgroundColor="#E5E7EB"
+                        TextColor="#1F2937" />
+
+                <Button Text="Clear" 
+                        Command="{Binding ClearFiltersCommand}"
+                        BackgroundColor="#6B7280"
+                        TextColor="White"
+                        Padding="8,0"
+                        HeightRequest="40" />
+            </HorizontalStackLayout>
+        </StackLayout>
+
+        <!-- Sort Options Bar -->
+        <Grid Grid.Row="2" Padding="16,8" BackgroundColor="White" ColumnDefinitions="Auto,*">
+            <Label Text="Sort by:" 
+                   FontSize="14" 
+                   TextColor="#6B7280"
+                   VerticalTextAlignment="Center" />
+            <HorizontalStackLayout Grid.Column="1" Spacing="8">
+                <Button Text="Price ↑" 
+                        Command="{Binding SortByPriceCommand}"
+                        BackgroundColor="#E5E7EB"
+                        TextColor="#1F2937"
+                        Padding="12,8"
+                        CornerRadius="6"
+                        FontSize="12" />
+                <Button Text="Rating ★" 
+                        Command="{Binding SortByRatingCommand}"
+                        BackgroundColor="#E5E7EB"
+                        TextColor="#1F2937"
+                        Padding="12,8"
+                        CornerRadius="6"
+                        FontSize="12" />
+                <Button Text="Newest" 
+                        Command="{Binding SortByNewestCommand}"
+                        BackgroundColor="#E5E7EB"
+                        TextColor="#1F2937"
+                        Padding="12,8"
+                        CornerRadius="6"
+                        FontSize="12" />
+            </HorizontalStackLayout>
+        </Grid>
+
+        <!-- Properties Grid -->
+        <CollectionView Grid.Row="3"
                         ItemsSource="{Binding Homes}"
                         SelectionMode="Single"
                         SelectionChangedCommand="{Binding HomeSelectedCommand}"
                         SelectionChangedCommandParameter="{Binding SelectedItem, Source={RelativeSource Self}}">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical"
-                                HorizontalItemSpacing="10"
-                                VerticalItemSpacing="10"
+                                HorizontalItemSpacing="12"
+                                VerticalItemSpacing="12"
                                 Span="2" />
             </CollectionView.ItemsLayout>
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Border StrokeShape="RoundedRectangle 15"
-                            StrokeThickness="0"
-                            Padding="0"
-                            Margin="10">
-                        <Grid RowDefinitions="150,Auto,Auto">
+                    <StackLayout Spacing="8">
+
+                        <!-- Image with overlay -->
+                        <Grid HeightRequest="150">
                             <Image Source="{Binding DefaultImage}"
                                    Aspect="AspectFill" />
-                            <Label Grid.Row="1"
-                                   Text="{Binding Address}"
-                                   Padding="10,5"
-                                   FontSize="14"
-                                   FontAttributes="Bold" />
-                            <Label Grid.Row="2"
-                                   Text="{Binding Price, StringFormat='${0:###,###}'}"
-                                   Padding="10,0,10,10"
-                                   FontSize="12"
-                                   Opacity="0.7" />
+
+                            <!-- Featured Badge -->
+                            <Label Text="Featured" 
+                                   BackgroundColor="#F59E0B"
+                                   TextColor="White"
+                                   Padding="8,4"
+                                   FontSize="10"
+                                   FontAttributes="Bold"
+                                   HorizontalOptions="Start"
+                                   VerticalOptions="Start"
+                                   Margin="8"
+                                   IsVisible="{Binding IsFeatured}" />
+
+                            <!-- Heart Icon -->
+                            <Button Text="♡" 
+                                    BackgroundColor="Transparent"
+                                    TextColor="White"
+                                    FontSize="20"
+                                    Padding="4"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Start"
+                                    Margin="8" />
                         </Grid>
-                    </Border>
+
+                        <!-- Address -->
+                        <Label Text="{Binding Address}"
+                               FontSize="13"
+                               FontAttributes="Bold"
+                               TextColor="#1F2937"
+                               LineBreakMode="TailTruncation"
+                               MaxLines="1" />
+
+                        <!-- City and Type -->
+                        <HorizontalStackLayout Spacing="4">
+                            <Label Text="{Binding City}" 
+                                   FontSize="11" 
+                                   TextColor="#6B7280" />
+                            <Label Text="•" 
+                                   FontSize="11" 
+                                   TextColor="#D1D5DB" />
+                            <Label Text="{Binding Type}" 
+                                   FontSize="11" 
+                                   TextColor="#6B7280" />
+                        </HorizontalStackLayout>
+
+                        <!-- Price -->
+                        <Label Text="{Binding Price, StringFormat='${0:###,###}'}"
+                               FontSize="16"
+                               FontAttributes="Bold"
+                               TextColor="#059669" />
+
+                        <!-- Rating and Details -->
+                        <HorizontalStackLayout Spacing="4">
+                            <HorizontalStackLayout Spacing="2">
+                                <Label Text="★" FontSize="12" TextColor="#F59E0B" />
+                                <Label Text="{Binding Rating}" FontSize="11" TextColor="#1F2937" />
+                            </HorizontalStackLayout>
+                            <Label Text="•" FontSize="11" TextColor="#D1D5DB" />
+                            <Label Text="{Binding Bedrooms, StringFormat='{0} bd'}" FontSize="11" TextColor="#6B7280" />
+                            <Label Text="•" FontSize="11" TextColor="#D1D5DB" />
+                            <Label Text="{Binding Bathrooms, StringFormat='{0} ba'}" FontSize="11" TextColor="#6B7280" />
+                        </HorizontalStackLayout>
+                    </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
+            <CollectionView.EmptyView>
+                <StackLayout Padding="24" Spacing="12" VerticalOptions="CenterAndExpand">
+                    <Label Text="No properties found" 
+                           FontSize="18" 
+                           FontAttributes="Bold"
+                           TextColor="#6B7280"
+                           HorizontalTextAlignment="Center" />
+                    <Label Text="Try adjusting your filters" 
+                           FontSize="14" 
+                           TextColor="#9CA3AF"
+                           HorizontalTextAlignment="Center" />
+                </StackLayout>
+            </CollectionView.EmptyView>
         </CollectionView>
     </Grid>
 </ContentPage>
