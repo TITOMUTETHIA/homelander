@@ -108,7 +108,15 @@ namespace homeapp.View
 
         private async void OnContactAgentClicked(object sender, EventArgs e)
         {
-            await DisplayAlert("Contact", "Agent contact feature coming soon", "OK");
+            // Navigate to ContactAgentPage passing the selected property
+            if (BindingContext is DetailsViewModel vm && vm.SelectedProperty != null)
+            {
+                await Navigation.PushAsync(new ContactAgentPage(vm.SelectedProperty));
+            }
+            else
+            {
+                await DisplayAlert("Contact", "Unable to determine the selected property.", "OK");
+            }
         }
     }
 }

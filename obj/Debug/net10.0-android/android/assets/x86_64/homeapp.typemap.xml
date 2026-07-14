@@ -1,4 +1,4 @@
-<api type="debug" assembly-name="homeapp" mvid="c77362eab453490483bf000d8cf7e82e">
+<api type="debug" assembly-name="homeapp" mvid="e6db441042f7477abdddf1e28bbbcb2e">
   <java-to-managed>
     <entry java-name="crc64d5dfdc8aedd6e72d/MainActivity" managed-name="homeapp.MainActivity, homeapp" managed-type-token-id="33554441" />
     <entry java-name="crc64d5dfdc8aedd6e72d/MainApplication" managed-name="homeapp.MainApplication, homeapp" managed-type-token-id="33554442" />

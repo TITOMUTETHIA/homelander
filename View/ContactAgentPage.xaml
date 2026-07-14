@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="homeapp.View.ContactAgentPage"
+             Title="Contact Agent">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="12">
+            <Label Text="Contact Agent" FontSize="20" FontAttributes="Bold" />
+            <Label Text="Please enter your contact details and message. We'll open your email client to send the inquiry." FontSize="13" TextColor="#6B7280" />
+
+            <Entry Placeholder="Your name" Text="{Binding Name}" />
+            <Entry Placeholder="Your email" Keyboard="Email" Text="{Binding Email}" />
+            <Editor Placeholder="Message" AutoSize="TextChanges" HeightRequest="140" Text="{Binding Message}" />
+
+            <HorizontalStackLayout Spacing="12">
+                <Button Text="Send" Command="{Binding SendCommand}" BackgroundColor="#4C65FF" TextColor="White" />
+                <Button Text="Cancel" Command="{Binding CancelCommand}" BackgroundColor="#E5E7EB" TextColor="#1F2937" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
