@@ -1,8 +1,5 @@
-using System;
 using System.Windows.Input;
-using Microsoft.Maui.ApplicationModel;
 using homeapp.Model;
-using System.Threading.Tasks;
 
 namespace homeapp.ViewModel
 {
