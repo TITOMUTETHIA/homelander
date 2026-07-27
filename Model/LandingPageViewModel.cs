@@ -1,4 +1,4 @@
-﻿namespace homeapp.View
+﻿namespace homeapp.Model
 {
     internal class LandingPageViewModel
     {
