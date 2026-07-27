@@ -1,8 +1,6 @@
+using homeapp.Model;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using homeapp.Model;
-using System.Linq;
-using System;
 
 namespace homeapp.ViewModel
 {

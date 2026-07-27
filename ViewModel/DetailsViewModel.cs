@@ -1,10 +1,4 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using System;
-using System.Text;
-using System.ComponentModel;
-using System.Windows.Input;
+﻿using System.ComponentModel;
 using homeapp.Model;
 
 namespace homeapp.ViewModel
